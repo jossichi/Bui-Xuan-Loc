@@ -4,9 +4,9 @@ class BTTL_Bai1:
     def __init__(self, filepath):
         self.filepath = filepath
         self.data = BeautifulSoup(self.read_file(filepath), 'lxml')
-        self.nhanviens = self.data.find_all('thong_tin_nhan_vien')  # Find all employee records
-        print(f"Tổng nhân viên: {len(self.data.find_all('nhanvien'))}")
-        print(f"Data: {self.nhanviens}")
+        self.thong_tin_nhan_vien = self.data.find('thong_tin_nhan_vien')  # Get the root element
+        self.nhanviens = self.thong_tin_nhan_vien.find_all(lambda tag: tag.name.startswith('nhanvien_'))  # Find all employee records
+        print(f"Tổng nhân viên: {len(self.nhanviens)}")
 
     def calculate_salary(self, employee_index):
         heso_luong_element = self.nhanviens[employee_index].find('hesoluong')
@@ -106,17 +106,39 @@ class BTTL_Bai1:
             data = file.read()
         return data
 
+    def total_salary(self):
+        total = 0
+        for employee_index in range(len(self.nhanviens)):
+            total += self.calculate_salary(employee_index)
+        return total
+    
+    def export_employee(self, employee_index):
+        heso_luong_element = self.nhanviens[employee_index].find('hesoluong')
+        phong_ban_element = self.nhanviens[employee_index].find('phongban')
+
+        if heso_luong_element is not None and phong_ban_element is not None:
+            heso_luong = float(heso_luong_element.text)
+            phong_ban = phong_ban_element.text
+
+            if heso_luong > 4.34 and phong_ban == 'TAI VU':
+                print(f"Thông tin nhân viên có hệ số lương lớn hơn 4.34 và làm ở phòng tài vụ:")
+                self.print_employee_information(employee_index)
+
     def print_all_employee_information(self):
-        print(f"Tổng nhân viên  {self.data.find_all('nhanvien')}")
         for employee_index in range(len(self.nhanviens)):
             
             self.print_employee_information(employee_index)
             print("-" * 30)
+        print(f"Tổng lương phải trả cho tất cả nhân viên: {self.total_salary()}")
+
 
 def main():
     filepath = 'DATA_BAI1.xml'
     test = BTTL_Bai1(filepath)
     test.print_all_employee_information()
+    for employee_index in range(len(test.nhanviens)):
+        test.export_employee(employee_index)
+        print("-" * 30)
 
 if __name__ == "__main__":
     main()
