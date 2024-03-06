@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<THONG_TIN_NHAN_VIEN>
+  <Nhanvien1>
+    <ID>NV_001</ID>
+    <Name>NGUYEN VAN A</Name>
+    <PhongBan>RnD</PhongBan>
+    <ChucVu>Lanh Dao</ChucVu>
+    <ThamNien>10 NAM</ThamNien>
+    <HeSoLuong> 0.8 </HeSoLuong>
+    <SoNgayLamViec> 22</SoNgayLamViec>
+  </Nhanvien1>
+
+  <Nhanvien2>
+    <ID>NV_002</ID>
+    <Name>NGUYEN VAN B</Name>
+    <PhongBan>Tai Chinh</PhongBan>
+    <ChucVu>Nhan Vien</ChucVu>
+    <ThamNien>10 NAM</ThamNien>
+    <HeSoLuong> 0.5 </HeSoLuong>
+    <SoNgayLamViec> 20 </SoNgayLamViec>
+  </Nhanvien2>
+
+
+  <Nhanvien3>
+    <ID>NV_003</ID>
+    <Name>  NGUYEN Thi C</Name>
+    <PhongBan>Nhan Su</PhongBan>
+    <ChucVu>Nhan Vien</ChucVu>
+    <ThamNien>5 NAM</ThamNien>
+    <HeSoLuong> 0.3 </HeSoLuong>
+    <SoNgayLamViec> 10 </SoNgayLamViec>
+  </Nhanvien3>
+</THONG_TIN_NHAN_VIEN>
